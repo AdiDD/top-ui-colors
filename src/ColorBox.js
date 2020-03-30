@@ -23,13 +23,21 @@ class ColorBox extends Component {
     const { copied } = this.state;
 
     return (
-      <CopyToClipboard text={background} onCopy={this.changeCopyState}>
+      <CopyToClipboard
+        text={
+          this.props.format === "hex" ? background.toUpperCase() : background
+        }
+        onCopy={this.changeCopyState}
+      >
         <div style={{ background }} className="ColorBox">
           <div
             style={{ background }}
             className={`copy-overlay ${copied && "show"}`}
           ></div>
-          <div className={`copy-msg ${copied && "show"}`}>
+          <div
+            className={`copy-msg ${this.props.format === "hex" && "hex"} ${this
+              .props.format !== "hex" && "rgb"} ${copied && "show"}`}
+          >
             <h1>Copied!</h1>
             <p>{this.props.background}</p>
           </div>

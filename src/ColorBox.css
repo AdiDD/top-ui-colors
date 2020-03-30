@@ -112,6 +112,13 @@
 .copy-msg p {
   font-size: 2rem;
   font-weight: 100;
-  text-transform: uppercase;
   margin-top: 2rem;
+}
+
+.copy-msg.hex p {
+  text-transform: uppercase;
+}
+
+.copy-msg.rgb p {
+  text-transform: lowercase;
 }
