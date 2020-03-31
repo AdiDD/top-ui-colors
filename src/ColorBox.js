@@ -20,15 +20,15 @@ const styles = {
   },
   copyText: {
     color: props =>
-      chroma(props.background).luminance() <= 0.2 ? "white" : "black"
+      chroma(props.background).luminance() <= 0.3 ? "white" : "black"
   },
   colorName: {
     color: props =>
-      chroma(props.background).luminance() <= 0.2 ? "white" : "rgba(0,0,0,0.7)"
+      chroma(props.background).luminance() <= 0.3 ? "white" : "rgba(0,0,0,0.7)"
   },
   seeMore: {
     color: props =>
-      chroma(props.background).luminance() <= 0.2 ? "white" : "rgba(0,0,0,0.7)",
+      chroma(props.background).luminance() <= 0.3 ? "white" : "rgba(0,0,0,0.7)",
     background: "rgba(255, 255, 255, 0.3)",
     position: "absolute",
     border: "none",
@@ -42,7 +42,7 @@ const styles = {
   },
   copyButton: {
     color: props =>
-      chroma(props.background).luminance() <= 0.2 ? "white" : "rgba(0,0,0,0.7)",
+      chroma(props.background).luminance() <= 0.3 ? "white" : "rgba(0,0,0,0.7)",
     width: "100px",
     height: "30px",
     position: "absolute",
@@ -61,6 +61,71 @@ const styles = {
     textDecoration: "none",
     cursor: "pointer",
     opacity: "0"
+  },
+  boxContent: {
+    position: "absolute",
+    width: "100%",
+    left: "0px",
+    bottom: "0px",
+    padding: "10px",
+    color: "black",
+    letterSpacing: "1px",
+    textTransform: "uppercase",
+    fontSize: "12px"
+  },
+  copyOverlay: {
+    opacity: "0",
+    zIndex: "0",
+    width: "100%",
+    height: "100%",
+    position: "absolute",
+    transition: "transform 0.6s ease-in",
+    transform: "scale(0.0001)"
+  },
+  showOverlay: {
+    opacity: "1",
+    transform: "scale(50)",
+    zIndex: "10"
+  },
+  copyMessage: {
+    position: "fixed",
+    left: "0",
+    right: "0",
+    top: "0",
+    bottom: "0",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    fontSize: "4rem",
+    transform: "scale(0.0001)",
+    opacity: "0",
+    color: "white",
+    "& h1": {
+      fontWeight: "400",
+      textShadow: "1px 2px black",
+      background: "rgba(255, 255, 255, 0.3)",
+      width: "100%",
+      textAlign: "center",
+      marginBottom: "0",
+      padding: "1rem",
+      textTransform: "uppercase"
+    },
+    "& p": {
+      fontSize: "2rem",
+      fontWeight: "100",
+      marginTop: "2rem"
+    }
+  },
+  showMessage: {
+    opacity: "1",
+    transform: "scale(1)",
+    zIndex: "25",
+    transition: "all 0.4s ease-in-out",
+    transitionDelay: "0.3s"
+  },
+  upperText: {
+    textTransform: "uppercase"
   }
 };
 
@@ -101,17 +166,18 @@ class ColorBox extends Component {
         <div style={{ background }} className={classes.ColorBox}>
           <div
             style={{ background }}
-            className={`copy-overlay ${copied && "show"}`}
+            className={`${classes.copyOverlay} ${copied &&
+              classes.showOverlay}`}
           ></div>
           <div
-            className={`copy-msg ${this.props.format === "hex" && "hex"} ${this
-              .props.format !== "hex" && "rgb"} ${copied && "show"}`}
+            className={`${classes.copyMessage} ${this.props.format === "hex" &&
+              classes.upperText} ${copied && classes.showMessage}`}
           >
             <h1>Copied!</h1>
             <p className={classes.copyText}>{this.props.background}</p>
           </div>
-          <div className="copy-container">
-            <div className="box-content">
+          <div>
+            <div className={classes.boxContent}>
               <span className={classes.colorName}>{name}</span>
             </div>
             <button className={classes.copyButton}>Copy</button>
