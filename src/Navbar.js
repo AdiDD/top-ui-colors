@@ -39,7 +39,7 @@ class Navbar extends Component {
   }
 
   render() {
-    const { level, changeLevel } = this.props;
+    const { level, changeLevel, showSlider } = this.props;
     const { format } = this.state;
 
     return (
@@ -47,19 +47,21 @@ class Navbar extends Component {
         <div className="logo">
           <Link to="/">top-ui-colors</Link>
         </div>
-        <div className="slider-container">
-          <span>Level: {level}</span>
-          <div className="slider">
-            <Slider
-              defaultValue={level}
-              min={100}
-              max={900}
-              step={100}
-              // onAfterChange={this.changeLevel}
-              onChange={changeLevel}
-            />
+        {showSlider && (
+          <div className="slider-container">
+            <span>Level: {level}</span>
+            <div className="slider">
+              <Slider
+                defaultValue={level}
+                min={100}
+                max={900}
+                step={100}
+                // onAfterChange={this.changeLevel}
+                onChange={changeLevel}
+              />
+            </div>
           </div>
-        </div>
+        )}
         <div className="select-container">
           <Select value={format} onChange={this.handleFormatChange}>
             <MenuItem value="hex">HEX - #FFFFFF</MenuItem>
