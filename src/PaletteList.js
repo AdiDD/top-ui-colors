@@ -51,8 +51,9 @@ class PaletteList extends Component {
             <h1>top-ui-colors</h1>
           </nav>
           <div className={classes.palettes}>
-            {palettes.map(palette => (
+            {palettes.map((palette, index) => (
               <MiniPalette
+                key={index}
                 {...palette}
                 handleClick={() => this.goToPalette(palette.id)}
               />
