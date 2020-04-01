@@ -4,11 +4,17 @@ const styles = theme => ({
   root: {
     display: "flex"
   },
+  hide: {
+    display: "none"
+  },
   appBar: {
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
-    })
+    }),
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
