@@ -13,7 +13,7 @@ const styles = {
     marginBottom: "-4px",
     "&:hover svg": {
       color: "white",
-      tranform: "scale(1.5)"
+      transform: "scale(1.5)"
     }
   },
   boxContent: {
@@ -35,12 +35,12 @@ const styles = {
 };
 
 function DraggableColorBox(props) {
-  const { classes } = props;
+  const { name, color, classes, deleteColor } = props;
   return (
-    <div className={classes.root} style={{ backgroundColor: props.color }}>
+    <div className={classes.root} style={{ backgroundColor: color }}>
       <div className={classes.boxContent}>
-        <span>{props.name}</span>
-        <DeleteIcon className={classes.deleteIcon} />
+        <span>{name}</span>
+        <DeleteIcon className={classes.deleteIcon} onClick={deleteColor} />
       </div>
     </div>
   );
