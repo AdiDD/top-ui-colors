@@ -14,13 +14,17 @@ export default {
     flexWrap: "wrap"
   },
   nav: {
+    color: "white",
     display: "flex",
     width: "100%",
     justifyContent: "space-between",
-    color: "white",
+    alignItems: "center",
     "& h1": {
       margin: "35px 0",
       fontWeight: "700"
+    },
+    "& a": {
+      color: "white"
     }
   },
   palettes: {
