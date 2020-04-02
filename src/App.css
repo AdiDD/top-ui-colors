@@ -8,6 +8,6 @@ body {
   font-family: Roboto;
 }
 
-/* ::-webkit-scrollbar {
+::-webkit-scrollbar {
   display: none;
-} */
+}
