@@ -1,4 +1,6 @@
 import { DRAWER_WIDTH } from "../constants";
+import sizes from "./sizes";
+
 const drawerWidth = DRAWER_WIDTH;
 const styles = theme => ({
   root: {
@@ -40,6 +42,11 @@ const styles = theme => ({
   },
   button: {
     margin: "0 0.5rem"
+  },
+  h6Text: {
+    [sizes.down("xs")]: {
+      display: "none"
+    }
   }
 });
 
