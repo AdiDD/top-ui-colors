@@ -32,10 +32,7 @@ class SingleColorPalette extends Component {
   }
 
   changeOverflowHidden = () => {
-    this.setState(
-      { overflowHidden: !this.state.overflowHidden },
-      console.log(this.state.overflowHidden)
-    );
+    this.setState({ overflowHidden: !this.state.overflowHidden });
   };
 
   render() {
