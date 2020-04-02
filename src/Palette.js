@@ -24,10 +24,10 @@ class Palette extends Component {
   }
 
   changeOverflowHidden = () => {
-    this.setState(st => ({
-      overflowHidden: !st.overflowHidden
-    }));
-    console.log(this.state.overflowHidden);
+    this.setState(
+      { overflowHidden: !this.state.overflowHidden },
+      console.log(this.state.overflowHidden)
+    );
   };
 
   render() {

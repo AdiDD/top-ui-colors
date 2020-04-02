@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import classNames from "classnames";
 import Navbar from "./Navbar";
 import ColorBox from "./ColorBox";
 import PaletteFooter from "./PaletteFooter";
@@ -9,7 +10,7 @@ import styles from "./styles/PaletteStyles";
 class SingleColorPalette extends Component {
   constructor(props) {
     super(props);
-    this.state = { format: "hex" };
+    this.state = { format: "hex", overflowHidden: false };
     this._shades = this.gatherShades(this.props.palette, this.props.colorId);
 
     this.changeFormat = this.changeFormat.bind(this);
@@ -30,8 +31,15 @@ class SingleColorPalette extends Component {
     this.setState({ format: value });
   }
 
+  changeOverflowHidden = () => {
+    this.setState(
+      { overflowHidden: !this.state.overflowHidden },
+      console.log(this.state.overflowHidden)
+    );
+  };
+
   render() {
-    const { format } = this.state;
+    const { format, overflowHidden } = this.state;
     const { id, paletteName, emoji } = this.props.palette;
     const { classes } = this.props;
     const colorBoxes = this._shades.map(color => (
@@ -41,11 +49,16 @@ class SingleColorPalette extends Component {
         background={color[format]}
         format={format}
         showingFullPalette={false}
+        changeOverflowHidden={this.changeOverflowHidden}
       />
     ));
 
     return (
-      <div className={classes.Palette}>
+      <div
+        className={classNames(classes.Palette, {
+          [classes.overflowHidden]: overflowHidden
+        })}
+      >
         <Navbar handleChange={this.changeFormat} showSlider={false} />
         <div className={classes.colors}>
           {colorBoxes}

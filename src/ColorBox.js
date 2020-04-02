@@ -16,11 +16,11 @@ class ColorBox extends Component {
   changeCopyState() {
     this.props.changeOverflowHidden();
     this.setState({ copied: true }, () => {
-      setTimeout(
-        () => this.setState({ copied: false }, this.props.changeOverflowHidden),
-        1500
-      );
+      setTimeout(() => this.setState({ copied: false }), 1500);
     });
+    setTimeout(() => {
+      this.props.changeOverflowHidden();
+    }, 2200);
   }
 
   render() {
