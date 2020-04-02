@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import classNames from "classnames";
 import { withStyles } from "@material-ui/styles";
 import ColorBox from "./ColorBox";
 import Navbar from "./Navbar";
@@ -8,7 +9,7 @@ import styles from "./styles/PaletteStyles";
 class Palette extends Component {
   constructor(props) {
     super(props);
-    this.state = { level: 500, format: "hex" };
+    this.state = { level: 500, format: "hex", overflowHidden: false };
 
     this.changeLevel = this.changeLevel.bind(this);
     this.changeFormat = this.changeFormat.bind(this);
@@ -22,10 +23,17 @@ class Palette extends Component {
     this.setState({ format: value });
   }
 
+  changeOverflowHidden = () => {
+    this.setState(st => ({
+      overflowHidden: !st.overflowHidden
+    }));
+    console.log(this.state.overflowHidden);
+  };
+
   render() {
     const { colors, paletteName, emoji, id } = this.props.palette;
     const { classes } = this.props;
-    const { level, format } = this.state;
+    const { level, format, overflowHidden } = this.state;
     const colorBoxes = colors[level].map(color => (
       <ColorBox
         key={color.id}
@@ -35,11 +43,16 @@ class Palette extends Component {
         paletteId={id}
         showingFullPalette
         format={format}
+        changeOverflowHidden={this.changeOverflowHidden}
       />
     ));
 
     return (
-      <div className={classes.Palette}>
+      <div
+        className={classNames(classes.Palette, {
+          [classes.overflowHidden]: overflowHidden
+        })}
+      >
         <Navbar
           level={level}
           changeLevel={this.changeLevel}

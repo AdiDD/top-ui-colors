@@ -1,6 +1,9 @@
 export default {
   Palette: {
     height: "100vh",
+    overflowX: "hidden"
+  },
+  overflowHidden: {
     overflow: "hidden"
   },
   colors: {
