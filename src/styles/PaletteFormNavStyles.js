@@ -40,6 +40,11 @@ const styles = theme => ({
       textDecoration: "none"
     }
   },
+  displayNoneAt870px: {
+    "@media (max-width: 870px)": {
+      display: "none"
+    }
+  },
   button: {
     margin: "0 0.5rem"
   },

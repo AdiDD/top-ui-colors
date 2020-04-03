@@ -1,9 +1,21 @@
 import { DRAWER_WIDTH } from "../constants";
+import sizes from "./sizes";
 
 const drawerWidth = DRAWER_WIDTH;
 const styles = theme => ({
   root: {
     display: "flex"
+  },
+  displayNoneAt600px: {
+    "@media (max-width: 600px)": {
+      display: "none"
+    }
+  },
+  header: {
+    [sizes.down("xxs")]: {
+      fontSize: 20,
+      paddingBottom: 30
+    }
   },
   drawer: {
     width: drawerWidth,

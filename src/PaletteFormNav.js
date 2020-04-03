@@ -63,7 +63,11 @@ class PaletteFormNav extends Component {
               Create A Palette
             </Typography>
           </Toolbar>
-          <div className={classes.navButtons}>
+          <div
+            className={classNames(classes.navButtons, {
+              [classes.displayNoneAt870px]: open
+            })}
+          >
             <Link to="/">
               <Button
                 className={classes.button}

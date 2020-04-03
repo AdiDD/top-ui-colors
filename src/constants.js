@@ -1,1 +1,1 @@
-export const DRAWER_WIDTH = 400;
+export const DRAWER_WIDTH = window.screen.width < 450 ? 200 : 400;

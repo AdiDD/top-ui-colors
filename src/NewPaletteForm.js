@@ -108,7 +108,7 @@ class NewPaletteForm extends Component {
           </div>
           <Divider />
           <div className={classes.drawerContainer}>
-            <Typography variant="h4" gutterBottom>
+            <Typography className={classes.header} variant="h4" gutterBottom>
               Design your palette
             </Typography>
             <div className={classes.buttons}>
@@ -139,7 +139,8 @@ class NewPaletteForm extends Component {
         </Drawer>
         <main
           className={classNames(classes.content, {
-            [classes.contentShift]: open
+            [classes.contentShift]: open,
+            [classes.displayNoneAt600px]: open
           })}
         >
           <div className={classes.drawerHeader} />

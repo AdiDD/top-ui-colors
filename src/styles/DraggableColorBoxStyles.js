@@ -37,7 +37,10 @@ export default {
     textTransform: "uppercase",
     fontSize: "12px",
     display: "flex",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    [sizes.down("xxs")]: {
+      padding: 0
+    }
   },
   deleteIcon: {
     transition: "all 0.3s ease-in-out"

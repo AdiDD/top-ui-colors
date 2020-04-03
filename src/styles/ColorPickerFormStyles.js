@@ -1,3 +1,5 @@
+import sizes from "./sizes";
+
 export default {
   colorPicker: {
     width: "100% !important",
@@ -11,6 +13,9 @@ export default {
     width: "100%",
     padding: "1rem",
     marginTop: "1rem",
-    fontSize: "2rem"
+    fontSize: "2rem",
+    [sizes.down("xxs")]: {
+      fontSize: "1rem"
+    }
   }
 };
