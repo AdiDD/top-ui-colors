@@ -34,9 +34,9 @@ class PaletteList extends Component {
     });
   };
 
-  goToPalette(id) {
+  goToPalette = id => {
     this.props.history.push(`/palette/${id}`);
-  }
+  };
 
   render() {
     const { palettes, classes } = this.props;
@@ -55,7 +55,7 @@ class PaletteList extends Component {
                   key={palette.id}
                   id={palette.id}
                   {...palette}
-                  handleClick={() => this.goToPalette(palette.id)}
+                  handleClick={this.goToPalette}
                   // deletePalette={this.props.deletePalette}
                   openDialog={this.deleteDialog}
                 />
